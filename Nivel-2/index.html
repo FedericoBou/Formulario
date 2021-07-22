@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ===    BOOSTRAP    === -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container flex-row">
+        <div class="row flex">  
+                <div class="col-md border border-info-50 p-2 m-3">
+                    <div class="titulo">
+                        <h2 class="text-center shadow-sm p-3 mb-5 bg-light rounded">Crear cuenta</h2>
+                    </div>
+                    <form class="survey-form" id="form">
+                        <div class="form-row">
+                            <div class="controlar col-md-6 mb-3">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control "  id="nombre" placeholder="Nombre">
+                                <div class="invalid-feedback" id="noValido">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div class="valid-feedback" id="valido">
+                                    Correcto
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group controlar">
+                                    <label for="select">Ciudad</label>
+                                    <select class="form-control" id="ciudad" placeholder= "Selecciona tu Ciudad">
+                                        <option selected></option>
+                                        <option value="1">Barcelona</option>
+                                        <option value="2">Madrid</option>
+                                        <option value="3">Málaga</option>
+                                    </select>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto
+                                </div>
+                            </div>
+                            <div class="controlar col-md-12 mb-3">
+                                <label for="email">Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" aria-describedby="inputGroupPrepend">
+                                    <div class="invalid-feedback">
+                                        Este campo es obligatorio.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="controlar form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" required>
+                                <small id="passHelp" class="form-text text-muted">
+                                Tu Password debe tener de 8-20 caracteres, debe contener al menos un número y como mínimo un mayúscula.
+                                </small>
+                                <div class="invalid-feedback">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto
+                                </div>
+                            </div>
+                            <div class="controlar col-md-12 mb-3">
+                                <label for="password2">Confirma el Password</label>
+                                <input type="password2"  class="form-control" id="password2" aria-describedby="passwordHelpBlock" required>
+                                <small id="passHelp2" class="form-text text-muted">
+                                Tu Password deben ser iguales.
+                                </small>
+                                <div class="invalid-feedback">
+                                    Este campo es obligatorio. Tus passwords no coincide.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="controlar form-group">
+                        <div class="form-check" >
+                            <input class="form-check-input" type="checkbox" id="check" required>
+                            <label class="form-check-label" for="invalidCheck">
+                            Estoy de acuerdo con los Terminos y Condiciones.
+                            </label>
+                            <div class="invalid-feedback">
+                            Debes aceptar para poder continuar.
+                            </div>
+                        </div>
+                        </div>
+                        <button type="button" onclick= "validarCuenta()" name="registrar" class="btn btn-primary btn-lg btn-block" id="boton">Enviar</button>
+                    </form> 
+                </div>
+                    
+                <!-- INICIO DE SESION -->                 
+                <div class="col-md-6 border border-info-50 p-2 m-3">
+                    <form class="form" id="formInicio">
+                        <div class="titulo">
+                            <h2 class="text-center shadow-sm p-3 mb-5 bg-light rounded">Iniciar Sesión</h2>
+                        </div>
+                        <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="nombresesion">Usuario</label>
+                            <input type="text" class="form-control" id="nombreSesion" placeholder="Usuario">
+                            <div class="valid-feedback">
+                                Correcto
+                            </div>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio.
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="passwordSesion">Password</label>
+                            <input type="password" id="passwordSesion" class="form-control" aria-describedby="passwordHelpBlock">
+                            <small id="passwordHelpBlock" class="form-text text-muted">
+                            Tu Passworde debe tener de 8-20 caracteres, debe contener al menos un número y como mínimo un mayúscula.
+                            </small>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio.
+                            </div>
+                            <div class="valid-feedback">
+                                Correcto
+                            </div>
+                        </div>
+                        <div class="position-relative col-md-12 mb-3">
+                            <a href="#" class="stretched-link">Has olvidado tu Password?</a>
+                        </div>
+                            <button type="button" onclick="enviarInicio()" id="bs" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
+                    </form>
+                </div> 
+              
+            </div>
+        </div>
+
+     <!-- ===    JS  === -->
+     <script src="validacion.js"></script>
+     <script src="sesion.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+ 
+</body>
+</html>
