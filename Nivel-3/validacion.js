@@ -7,12 +7,21 @@ expresionPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d$@$!%*?&]|[^ ]){8,20}$
 document.getElementById("boton").onclick = function() {validarCuenta()};
 
 function validarCuenta(){
+  
   if(nombre.value == ""){
   document.getElementById("nombre").classList.add('is-invalid');
   document.getElementById("nombre").classList.remove('is-valid');
   }else{
     document.getElementById("nombre").classList.remove('is-invalid');
     document.getElementById('nombre').classList.add ('is-valid');
+  }
+
+  if(ciudad.value == ""){
+    document.getElementById("ciudad").classList.add('is-invalid');
+    document.getElementById("ciudad").classList.remove('is-valid');
+  }else{
+    document.getElementById("ciudad").classList.remove('is-invalid');
+    document.getElementById('ciudad').classList.add ('is-valid');
   }
 
   if(email.value == ""){
@@ -25,65 +34,55 @@ function validarCuenta(){
     document.getElementById("email").classList.add('is-valid'),
     document.getElementById("email").classList.remove('is-invalid');
   }
-
-  if(ciudad.value == ""){
-    document.getElementById("ciudad").classList.add('is-invalid');
-    document.getElementById("ciudad").classList.remove('is-valid');
-  }else{
-    document.getElementById("ciudad").classList.remove('is-invalid');
-    document.getElementById('ciudad').classList.add ('is-valid');
-  }
-
+  
+//COMPROBAMOS LOS PASSWORD
   if(password.value == ""){
     document.getElementById("password").classList.add('is-invalid');
     document.getElementById("password").classList.remove('is-valid');
   }else if (!expresionPass.test(password.value)){
     document.getElementById("password").classList.add('is-invalid');
     document.getElementById("password").classList.remove('is-valid');
+  }else if(password.value !== password2.value){
+  document.getElementById("password").classList.remove('is-invalid');
+  document.getElementById('password').classList.add ('is-valid');
   }else{
     document.getElementById("password").classList.remove('is-invalid');
     document.getElementById('password').classList.add ('is-valid');
   }
-    
   if(password2.value == ""){
     document.getElementById("password2").classList.add('is-invalid');
     document.getElementById("password2").classList.remove('is-valid');
   }else if (!expresionPass.test(password2.value)) {
     document.getElementById("password2").classList.add('is-invalid');
     document.getElementById("password2").classList.remove('is-valid');
-  }
-  else{
-    document.getElementById("password2").classList.remove('is-invalid');
-    document.getElementById('password2').classList.add ('is-valid');
-  }
-
-  if (password.value !== password2.value) {
+  }else if(password.value !== password2.value){
     document.getElementById("password2").classList.add('is-invalid');
     document.getElementById("password2").classList.remove('is-valid');
   }else{
     document.getElementById("password2").classList.remove('is-invalid');
-    document.getElementById("password2").classList.add('is-valid');
+    document.getElementById('password2').classList.add ('is-valid');
   }
-      // Comprobamos el check
-  document.getElementById('check').addEventListener('change', function() {
-    
+      // Comprobar el check
+  document.getElementById('customControlValidation1').addEventListener('change', function() {
     if (this.checked) {
-      this.checked = document.getElementById("check").classList.remove('is-invalid');
-      this.checked = document.getElementById("check").classList.add('is-valid');
+   document.getElementById('customControlValidation1').classList.add("is-valid");
+   document.getElementById('customControlValidation1').classList.remove("is-invalid");
     }else{
-      this.checked = document.getElementById("check").classList.add('is-invalid');
-      this.checked = document.getElementById("check").classList.remove('is-valid');
+      document.getElementById('customControlValidation1').classList.add("is-invalid");
+      document.getElementById('customControlValidation1').classList.remove("is-valid");
     }
   });
 
-  if(nombre.value == "" || password.value == "" || ciudad.value == "" || email.value == ""){
+  if(nombre.value == "" || password.value == "" || password2.value == "" || ciudad.value == "" || email.value == ""){
     alert("Por favor verifique los datos, ya que algunos estan vacios!")
     return false;
-  }  
-  else{ 
+  }else if(password.value !== password2.value){
+    alert("El password no coincide")
+  } else if(customControlValidation1 !== this.checked){
+    document.getElementById('customControlValidation1').classList.add("is-invalid");
+  }else{ 
     $('#miModalCuenta').modal();   
   }
-
   var registroModal = {
     Nombre: nombre.value,
     Email: email.value,
